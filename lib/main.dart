@@ -1,5 +1,6 @@
+// main.dart
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'splashscreen.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 void main() {
@@ -11,39 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: SplashScreen(),
-    );
-  }
-}
-
-class SplashScreen extends StatefulWidget {
-  @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    // Navigate to HomeScreen after 5 seconds
-    Timer(Duration(seconds: 5), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => HomeScreen()),
-      );
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset('assets/images/logo.png'),
-            CircularProgressIndicator(),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -61,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
     if (_isPlaying) {
       _audioPlayer.pause();
     } else {
-      _audioPlayer.play('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Example audio URL
+      _audioPlayer.play(
+          'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Example audio URL
     }
     setState(() {
       _isPlaying = !_isPlaying;
@@ -83,11 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Container(
           child: Row(
-            children: [
-              Text("data")
-            ],
+            children: [Text("data")],
           ),
-        )
+        ),
       ),
     );
   }
